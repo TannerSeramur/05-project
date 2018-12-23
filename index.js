@@ -7,8 +7,12 @@ const Bitmap = require('./Bitmap');
 // ------------------ GET TO WORK ------------------- //
 
 // TODO: Explain how this works (in your README)
+//process.argv[0] is process exec path
+//process.argv[1] is the file path entered in the terminal
+//proccess.argv[2] is the transformion operation specificed in the terminal
 const [file, operation] = process.argv.slice(2);
 
+console.log(process.argv);
 if (!file) {
   throw 'file name required';
 }

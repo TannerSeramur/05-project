@@ -25,22 +25,23 @@ class Bitmap {
   // * Would be called by Bitmap.transform('greyscale')
   // * Pro Tip: Use "pass by reference" to alter the bitmap's buffer in place so you don't have to pass it around ...
   greyscale() {
-    console.log('Transforming bitmap into greyscale', this);
 
-    // for(let i = 0; i < this.pixelArray.length; i += 4){
-    //   this.colorArray[i] = 225;
-    //   this.pixelArray[i+1] = this.pixelArray[i+1];
-    //   this.pixelArray[i+2] = this.pixelArray[i+2];
-    //   this.pixelArray[i+3] = 0;
-    // }
+    for (let i=0; i< this.pixelArray.length; i+=4) {
+      let avg = (this.pixelArray[i]+this.pixelArray[i+1]+this.pixelArray[i+2])/3;
+
+      this.pixelArray[i] = avg;
+      this.pixelArray[i+1] = avg;
+      this.pixelArray[i+2] = avg;
   
-  
-    //TODO: alter bmp to make the image greyscale ...
-  
+    }
   }
 
   invert(){
-    //bmp = {};
+    for (let i = 0; i < this.pixelArray.length; i += 4) {
+      this.pixelArray[i] = 255 - this.pixelArray[i];// red
+      this.pixelArray[i + 1] = 255 - this.pixelArray[i + 1]; // green
+      this.pixelArray[i + 2] = 255 - this.pixelArray[i + 2]; // blue
+    }
   }
 }
 
