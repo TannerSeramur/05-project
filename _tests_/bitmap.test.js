@@ -3,7 +3,7 @@
 const Bitmap = require(__dirname+'/../Bitmap.js');
 const fs = require('fs');
 
-let transforms = ['greyscale', 'invert', 'darken', 'punk'];
+let transforms = ['greyscale', 'invert', 'darken', 'punk', 'flip', 'mirror'];
 
 
 describe('transforming a bit map', () => {
