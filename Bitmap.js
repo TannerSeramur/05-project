@@ -1,3 +1,7 @@
+'use strict';
+
+let transformations = require('./transformation/index');
+
 //Bitmap -- receives a file name, used in the transformer to note the new buffer
 class Bitmap {
 
@@ -13,7 +17,7 @@ class Bitmap {
     this.bitPerPixel = buffer.readInt16LE(28);
     
     this.colorArray = buffer.slice(54, this.offset);
-    this.pixelArray = buffer.slice(1078);
+    this.pixelArray = buffer.slice(1480);
     
     console.log(this.pixelArray.length, this.height*this.width);
     if(!this.pixelArray.length){
@@ -25,69 +29,13 @@ class Bitmap {
   // * Sample Transformer (greyscale)
   // * Would be called by Bitmap.transform('greyscale')
   // * Pro Tip: Use "pass by reference" to alter the bitmap's buffer in place so you don't have to pass it around ...
-  greyscale() {
-
-    for (let i=0; i< this.colorArray.length; i+=4) {
-      let avg = (this.colorArray[i]+this.colorArray[i+1]+this.colorArray[i+2])/3;
-
-      this.colorArray[i] = avg;
-      this.colorArray[i+1] = avg;
-      this.colorArray[i+2] = avg;
+  transform(transformationName){
+    if (!transformations[transformationName]){
+      throw 'sorry, that is not a valid operation';
+    }
+    transformations[transformationName](this);
+  }
   
-    }
-  }
-
-  invert(){
-    for (let i = 0; i < this.colorArray.length; i += 4) {
-      this.colorArray[i] = 255 - this.colorArray[i];// red
-      this.colorArray[i + 1] = 255 - this.colorArray[i + 1]; // green
-      this.colorArray[i + 2] = 255 - this.colorArray[i + 2]; // blue
-    }
-  }
-
-  punk(){
-
-    for (let i = 0; i < this.colorArray.length; i += 4){
-
-      //blue eyebrows
-      //yellow beard
-      if(i % 3 === 0){
-        this.colorArray[i+4] = 100;
-      }
-      
-    }
-  }
-
-  darken() {
-
-    for (let i = 0; i < this.colorArray.length; i+=4){
-
-      this.colorArray[i] = this.colorArray[i] *.5;
-      this.colorArray[i+1] = this.colorArray[i+1] *.5;
-      this.colorArray[i+2] = this.colorArray[i+2] *.5;
-
-    }
-  }  
-  flip(){
-    console.log(this.bitPerPixel);
-
-    // for(let i = 0; i<this.bitPerPixel.length; i+=4){
-    //   if(i < this.bitPerPixel.length/2){
-    //     this.bitPerPixel[i] = this.bitPerPixel[i] * 2;
-    //   }else{
-    //     this.height[i] = this.height[i];
-    //   }
-      
-    // }
-
-
-    console.log(this.height, 'HEIGHTR', this.width, "width");
-    
-
-  }
-
-
-
 }
 
 module.exports = Bitmap;

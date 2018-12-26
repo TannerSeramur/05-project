@@ -5,4 +5,5 @@ module.exports = {
   greyscale: require('./greyscale'),
   invert: require('./invert'),
   punk: require('./punk'),
+  flip: require('./flip'),
 };
