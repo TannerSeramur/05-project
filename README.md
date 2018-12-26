@@ -35,19 +35,35 @@ invert is a function that uses the parsed bitmap information from the parser to 
   - `colorArray` {array} - the buffer array of pixel color information
 
 
-#### `punk`
+#### `punk.js`
 ##### Exported Values and Methods
 punk is a function that uses the parsed bitmap information from the parser to apply a transformation on the bitmap image turning the blacks yellow and blue.
 
-- `invert(pixelArray/colorArray)`
+- `punk(pixelArray/colorArray)`
   - `pixelArray` {array} - the buffer array of pixel information
   - `colorArray` {array} - the buffer array of pixel color information
 
-#### `darken`
+#### `darken.js`
 ##### Exported Values and Methods
 darken is a function that uses the parsed bitmap information from the parser to apply a transformation on the bitmap image making the entire image darker.
 
-- `invert(pixelArray/colorArray)`
+- `darken(pixelArray/colorArray)`
+  - `pixelArray` {array} - the buffer array of pixel information
+  - `colorArray` {array} - the buffer array of pixel color information
+
+#### `mirror.js`
+##### Exported Values and Methods
+mirror is a function that uses the parsed bitmap information from the parser to apply a transformation on the bitmap image making the top half of the image mirror on the bottom half.
+
+- `mirror(pixelArray/colorArray)`
+  - `pixelArray` {array} - the buffer array of pixel information
+  - `colorArray` {array} - the buffer array of pixel color information
+
+#### `flip.js`
+##### Exported Values and Methods
+flip is a function that uses the parsed bitmap information from the parser to apply a transformation on the bitmap image making it flip up-side-down.
+
+- `flip(pixelArray/colorArray)`
   - `pixelArray` {array} - the buffer array of pixel information
   - `colorArray` {array} - the buffer array of pixel color information
 
@@ -61,6 +77,8 @@ darken is a function that uses the parsed bitmap information from the parser to 
   - invert
   - punk
   - darken
+  - flip
+  - mirror
 
 
 #### Tests
@@ -72,4 +90,6 @@ darken is a function that uses the parsed bitmap information from the parser to 
   * invert will invert the colors in the image
   * punk will turn the blacks blue
   * darken will darken the image
+  * mirror will reflect the top of the image on the bottom
+  * flip will turn the image up-side-down
 
