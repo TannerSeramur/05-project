@@ -6,10 +6,8 @@
 ### Author: Lena Eivy and Tanner Seramur
 
 ### Links and Resources
-* [repo](http://xyz.com)
+* [repo](https://github.com/codefellows-seattle-javascript-401d28/05-project)
 * [travis](http://xyz.com)
-* [back-end](http://xyz.com)
-* [front-end](http://xyz.com)
 
 ### Modules
 #### `Bitmap.js`
