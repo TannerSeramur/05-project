@@ -18,7 +18,8 @@ class Bitmap {
     
     this.colorArray = buffer.slice(54, this.offset);
     this.pixelArray = buffer.slice(1480);
-    
+    this.mirrorArray = buffer.slice(1479);
+     
     console.log(this.pixelArray.length, this.height*this.width);
     if(!this.pixelArray.length){
       throw 'Invalid .bmp format';

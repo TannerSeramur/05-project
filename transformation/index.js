@@ -6,4 +6,5 @@ module.exports = {
   invert: require('./invert'),
   punk: require('./punk'),
   flip: require('./flip'),
+  mirror: require('./mirror'),
 };
