@@ -67,6 +67,24 @@ class Bitmap {
       this.colorArray[i+2] = this.colorArray[i+2] *.5;
 
     }
+  }  
+
+  flip(){
+    console.log(this.bitPerPixel);
+
+    // for(let i = 0; i<this.bitPerPixel.length; i+=4){
+    //   if(i < this.bitPerPixel.length/2){
+    //     this.bitPerPixel[i] = this.bitPerPixel[i] * 2;
+    //   }else{
+    //     this.height[i] = this.height[i];
+    //   }
+      
+    // }
+
+
+    console.log(this.height, 'HEIGHTR', this.width, "width");
+    
+
   }
 
 }
