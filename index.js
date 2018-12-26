@@ -25,11 +25,9 @@ fs.readFile(file, (err, buffer) => {
   //console.log({buffer});
   if(err){throw err;}
   let bitmapInstance = new Bitmap(buffer);
-  if (! bitmapInstance[operation]){
-    throw 'sorry, that is not a valid operation';
-  }
+  
   //runs the specified transformtion from the Bitmap class
-  bitmapInstance[operation]();
+  bitmapInstance.transform(operation);
 
   let newFileName = file.replace(/\.bmp$/, operation+`.bmp`);
 
