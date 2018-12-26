@@ -20,14 +20,16 @@ Receives a file name, used in the transformer to note the new buffer. Exports mu
 Parser -- accepts a buffer and will parse through it, according to the specification, creating object properties for each segment of the file
 
 
-###### `greyscale`
+#### `greyscale.js`
+##### Exported Values and Methods
 greyscale is a function that uses the parsed bitmap information from the parser to apply a transformation on the bitmap image changeing it from color to greyscale.
 
 - `greyscale(pixelArray/colorArray)`
   - `pixelArray` {array} - the buffer array of pixel information
   - `colorArray` {array} - the buffer array of pixel color information
 
-###### `invert`
+#### `invert.js`
+##### Exported Values and Methods
 invert is a function that uses the parsed bitmap information from the parser to apply a transformation on the bitmap image inverting the colors.
 
 - `invert(pixelArray/colorArray)`
@@ -35,14 +37,16 @@ invert is a function that uses the parsed bitmap information from the parser to 
   - `colorArray` {array} - the buffer array of pixel color information
 
 
-###### `punk`
+#### `punk`
+##### Exported Values and Methods
 punk is a function that uses the parsed bitmap information from the parser to apply a transformation on the bitmap image turning the blacks yellow and blue.
 
 - `invert(pixelArray/colorArray)`
   - `pixelArray` {array} - the buffer array of pixel information
   - `colorArray` {array} - the buffer array of pixel color information
 
-###### `darken`
+#### `darken`
+##### Exported Values and Methods
 darken is a function that uses the parsed bitmap information from the parser to apply a transformation on the bitmap image making the entire image darker.
 
 - `invert(pixelArray/colorArray)`
@@ -62,9 +66,12 @@ darken is a function that uses the parsed bitmap information from the parser to 
 
 
 #### Tests
-* How do you run tests?
-* What assertions were made?
-* What assertions need to be / should be made?
+* To run test in the CLI - `npm run test`
+* The following assertations were made:
+  * user enters one of the specified named transformations
+  * user enters a valid file path to a bmp image
+  * greyscale will remove the color from an image
+  * invert will invert the colors in the image
+  * punk will turn the blacks blue
+  * darken will darken the image
 
-#### UML
-Link to an image of the UML for your application and response to events
