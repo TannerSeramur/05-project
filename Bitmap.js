@@ -68,7 +68,6 @@ class Bitmap {
 
     }
   }  
-
   flip(){
     console.log(this.bitPerPixel);
 
@@ -86,6 +85,8 @@ class Bitmap {
     
 
   }
+
+
 
 }
 
