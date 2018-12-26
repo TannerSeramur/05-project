@@ -1,17 +1,40 @@
 'use strict';
 
-const { exec } = require('child_process');
+describe('transforming a bit map', () => {
 
-describe('transforming a bitmap', () => {
+  it('removes the color from a bitmap image using greyscale', () => {
 
-  it('transforms an image', () => {
-    exec('node index.js assets/24bit.bmp greyscale', (error, stdout, stderr) => {
-      if (error) {
-        console.error(`exec error: ${error}`);
-        return;
-      }
-      console.log(`stdout: ${stdout}`);
-      console.log(`stderr: ${stderr}`);
-    });
+  });
+
+  it('inverts the colors in a bitmap image', () => {
+
+  });
+
+  it('darkens a bitmap image', () => {
+
+  });
+
+  it('makes the blacks blue in a bitmap image', () => {
+
   });
 });
+
+describe('running a transformation on a bitmap', () => {
+
+  it('requires two arguments in the CLI', () => {
+
+  });
+
+  it('requires a valid transformation name', () => {
+
+  });
+
+  it('requires a valid filepath to a bmp image', () => {
+
+  });
+
+  it('requires a bmp image', () => {
+
+  });
+});
+
