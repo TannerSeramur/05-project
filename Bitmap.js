@@ -12,9 +12,10 @@ class Bitmap {
     this.height = buffer.readInt16LE(22);
     this.bitPerPixel = buffer.readInt16LE(28);
     
-    this.pixelArray = buffer.slice(54, this.offset);
-    //console.log({buffer}, buffer.length, 'offset', this.offset, 'pixelArray', this.pixelArray);
-    //this.pixelArray = buffer.slice(1078);
+    this.colorArray = buffer.slice(54, this.offset);
+    this.pixelArray = buffer.slice(1078);
+    
+    console.log(this.pixelArray.length, this.height*this.width);
     if(!this.pixelArray.length){
       throw 'Invalid .bmp format';
     }
@@ -25,23 +26,49 @@ class Bitmap {
   // * Would be called by Bitmap.transform('greyscale')
   // * Pro Tip: Use "pass by reference" to alter the bitmap's buffer in place so you don't have to pass it around ...
   greyscale() {
-    console.log('Transforming bitmap into greyscale', this);
 
-    // for(let i = 0; i < this.pixelArray.length; i += 4){
-    //   this.colorArray[i] = 225;
-    //   this.pixelArray[i+1] = this.pixelArray[i+1];
-    //   this.pixelArray[i+2] = this.pixelArray[i+2];
-    //   this.pixelArray[i+3] = 0;
-    // }
+    for (let i=0; i< this.colorArray.length; i+=4) {
+      let avg = (this.colorArray[i]+this.colorArray[i+1]+this.colorArray[i+2])/3;
+
+      this.colorArray[i] = avg;
+      this.colorArray[i+1] = avg;
+      this.colorArray[i+2] = avg;
   
-  
-    //TODO: alter bmp to make the image greyscale ...
-  
+    }
   }
 
   invert(){
-    //bmp = {};
+    for (let i = 0; i < this.colorArray.length; i += 4) {
+      this.colorArray[i] = 255 - this.colorArray[i];// red
+      this.colorArray[i + 1] = 255 - this.colorArray[i + 1]; // green
+      this.colorArray[i + 2] = 255 - this.colorArray[i + 2]; // blue
+    }
   }
+
+  punk(){
+
+    for (let i = 0; i < this.colorArray.length; i += 4){
+
+      //blue eyebrows
+      //yellow beard
+      if(i % 3 === 0){
+        this.colorArray[i+4] = 100;
+      }
+      
+    }
+  }
+
+  darken() {
+
+    for (let i = 0; i < this.colorArray.length; i+=4){
+
+      this.colorArray[i] = this.colorArray[i] *.5;
+      this.colorArray[i+1] = this.colorArray[i+1] *.5;
+      this.colorArray[i+2] = this.colorArray[i+2] *.5;
+
+    }
+  }
+
 }
 
 module.exports = Bitmap;

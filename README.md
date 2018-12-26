@@ -1,9 +1,9 @@
 ![CF](http://i.imgur.com/7v5ASc8.png) LAB
 =================================================
 
-## Project Name
+## Transforming John
 
-### Author: Student/Group Name
+### Author: Lena Eivy and Tanner Seramur
 
 ### Links and Resources
 * [repo](http://xyz.com)
