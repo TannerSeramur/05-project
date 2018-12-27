@@ -44,19 +44,15 @@ describe('running a transformation on a bitmap', () => {
   it('requires a valid transformation name', () => {
 
     fs.readFile(__dirname+`/../assets/baldy.bmp`, (err, buffer) => {
-      let result = badTransform('badTransformation');
       if(err){throw err;}
+      
       let bitmapInstance = new Bitmap(buffer);
       
-      function badTransform(transformationName){
-        if (transforms.includes(transformationName)){
-          bitmapInstance.transform(transformationName);
-        } else {
-          expect(result).toThrow('sorry, that is not a valid operation');
-        }
-      }
+      expect(()=>{
+        bitmapInstance.transform('badTransformation');
+      }).toThrow('sorry, that is not a valid operation');
+
     });
   });
 
 });
-

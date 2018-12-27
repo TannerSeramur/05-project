@@ -93,3 +93,10 @@ flip is a function that uses the parsed bitmap information from the parser to ap
   * mirror will reflect the top of the image on the bottom
   * flip will turn the image up-side-down
 
+### Notes
+* in the index.js, we declare a const [file, operation] = process.argv.slice(2);
+  * this is the variable that allows us to access the arguments entered in the CLI. 
+  * process.argv[0] is process exec path
+  * process.argv[1] is the file path entered in the terminal
+  * proccess.argv[2] is the transformion operation specificed in the terminal
+

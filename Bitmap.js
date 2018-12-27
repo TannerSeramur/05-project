@@ -29,7 +29,6 @@ class Bitmap {
 
   // * Sample Transformer (greyscale)
   // * Would be called by Bitmap.transform('greyscale')
-  // * Pro Tip: Use "pass by reference" to alter the bitmap's buffer in place so you don't have to pass it around ...
   transform(transformationName){
     if (!transformations[transformationName]){
       throw 'sorry, that is not a valid operation';

@@ -4,9 +4,6 @@ const fs = require('fs');
 const Bitmap = require('./Bitmap');
 
 
-// ------------------ GET TO WORK ------------------- //
-
-// TODO: Explain how this works (in your README)
 //process.argv[0] is process exec path
 //process.argv[1] is the file path entered in the terminal
 //proccess.argv[2] is the transformion operation specificed in the terminal
@@ -39,5 +36,3 @@ fs.readFile(file, (err, buffer) => {
   });
 });
 
-// Note that this has to be nested!
-// Also, it uses the bitmap's instance properties for the name and thew new buffer
