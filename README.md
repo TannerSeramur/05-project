@@ -7,7 +7,7 @@
 
 ### Links and Resources
 * [repo](https://github.com/codefellows-seattle-javascript-401d28/05-project)
-* [travis](http://xyz.com)
+* [travis](https://travis-ci.com/applena/05-project.svg?branch=masters)
 
 ### Modules
 #### `Bitmap.js`
