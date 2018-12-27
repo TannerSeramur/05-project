@@ -1,3 +1,7 @@
+'use strict';
+
+let transformations = require('./transformation/index');
+
 //Bitmap -- receives a file name, used in the transformer to note the new buffer
 class Bitmap {
 
@@ -12,9 +16,11 @@ class Bitmap {
     this.height = buffer.readInt16LE(22);
     this.bitPerPixel = buffer.readInt16LE(28);
     
-    this.pixelArray = buffer.slice(54, this.offset);
-    //console.log({buffer}, buffer.length, 'offset', this.offset, 'pixelArray', this.pixelArray);
-    //this.pixelArray = buffer.slice(1078);
+    this.colorArray = buffer.slice(54, this.offset);
+    this.pixelArray = buffer.slice(1480);
+    this.mirrorArray = buffer.slice(1479);
+     
+    // console.log(this.pixelArray.length, this.height*this.width);
     if(!this.pixelArray.length){
       throw 'Invalid .bmp format';
     }
@@ -23,25 +29,13 @@ class Bitmap {
 
   // * Sample Transformer (greyscale)
   // * Would be called by Bitmap.transform('greyscale')
-  // * Pro Tip: Use "pass by reference" to alter the bitmap's buffer in place so you don't have to pass it around ...
-  greyscale() {
-    console.log('Transforming bitmap into greyscale', this);
-
-    // for(let i = 0; i < this.pixelArray.length; i += 4){
-    //   this.colorArray[i] = 225;
-    //   this.pixelArray[i+1] = this.pixelArray[i+1];
-    //   this.pixelArray[i+2] = this.pixelArray[i+2];
-    //   this.pixelArray[i+3] = 0;
-    // }
-  
-  
-    //TODO: alter bmp to make the image greyscale ...
-  
+  transform(transformationName){
+    if (!transformations[transformationName]){
+      throw 'sorry, that is not a valid operation';
+    }
+    transformations[transformationName](this);
   }
-
-  invert(){
-    //bmp = {};
-  }
+  
 }
 
 module.exports = Bitmap;
