@@ -40,19 +40,44 @@ describe('transforming a bit map', () => {
 
 describe('running a transformation on a bitmap', () => {
 
-  it('requires an operation', () => {
-    
-  });
 
   it('requires a valid transformation name', () => {
+    fs.readFile(__dirname+`/../assets/baldy.bmp`, (err, buffer) => {
+      //console.log({buffer});
+      if(err){throw err;}
+      let bitmapInstance = new Bitmap(buffer);
+      
+      //runs the specified transformtion from the Bitmap class
+      bitmapInstance.transform('badTransform.js');
+    
+      let newFileName = `/../assets/baldy.bmp`.replace(/\.bmp$/, `badTransform`+`.bmp`);
+    
+      fs.writeFile(newFileName, bitmapInstance.buffer, (err, out) => {
+        if (err) {
+          throw err;
+        }
+        console.log(`Bitmap Transformed: ${newFileName}`);
+      });
+    });
+    
+    expect(()=> {
+    }).toThrow('sorry, that is not a valid operation');
 
   });
 
   it('requires a valid filepath to a bmp image', () => {
+    let filePath = ['bad.bmp'];
+    expect(()=> {
+      fs.readFile(filePath,(err.data) = {});
+    }).toThrow();
 
   });
 
   it('requires a bmp image', () => {
+    let image = null;
+    expect(()=> {
+      fs.readFile(image,(err.data) = {});
+    }).toThrow();
 
   });
 });
